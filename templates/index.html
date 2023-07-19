@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h1 class="center-align">ポートフォリオへようこそ！</h1>
+    <p class="center-align flow-text">
+        ここでは私についての詳細や、これまでに手がけたプロジェクトを見ることができます。
+    </p>
+
+    <h2 class="center-align">私のプロジェクト</h2>
+
+    <div class="row">
+        {% for project in projects %}
+            {% if loop.index0 % 2 == 0 %}
+                {% if not loop.first %}
+                    </div>
+                {% endif %}
+                <div class="row">
+            {% endif %}
+            <div class="col s12 m6">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">{{ project.title }}</span>
+                        <p>
+                            <strong>年度：</strong> {{ project.year }} <br>
+                            <strong>使用技術：</strong> {{ project.tech }} <br>
+                            {{ project.abstract }}
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        <a href="{{ url_for('project', id=project.id) }}">詳細を表示</a>
+                    </div>
+                </div>
+            </div>
+            {% if loop.last %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

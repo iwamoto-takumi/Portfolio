@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col s12 m8 offset-m2">
+            <h2 class="header center-align">{{ project.title }}</h2>
+        </div>
+        <div class="col s12 m8 offset-m2">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">学年</span>
+                    <p>{{ project.year }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m8 offset-m2">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">使用技術</span>
+                    <p>{{ project.tech }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m8 offset-m2">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">プロジェクトの説明</span>
+                    <p>{{ project.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% if project.images %}
+        <div class="col s12 m8 offset-m2">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">画像</span>
+                    {% for image in project.images %}
+                        <img src="{{ image }}">
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if project.url %}
+        <div class="col s12 m8 offset-m2">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">URL</span>
+                    <a href="{{ project.url }}" class="white-text" target="_blank">成果物を見る</a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="col s12 m8 offset-m2">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">Github</span>
+                    <p><a href="{{ project.github }}" class="white-text" target="_blank">リポジトリを見る</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
